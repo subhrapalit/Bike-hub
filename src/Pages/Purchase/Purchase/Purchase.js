@@ -61,7 +61,7 @@ const Purchase = () => {
                         <input defaultValue={user.email} {...register("email", { required: true })} />
                         {errors.email && <span className="error">This field is required</span>}
                         <input type="number" {...register("contact")} placeholder="Your Contact Number" />
-                        <input type="number" {...register("amount")} placeholder="Number of Units" />
+                        <input defaultValue={products.price} {...register("price", { required: true })} />
                         <input defaultValue={products.name} {...register("product", { required: true })} />
 
 

@@ -9,6 +9,11 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import { Button } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
+import {
+    Switch,
+    Route,
+    Link,
+} from "react-router-dom";
 
 const Orders = () => {
     const { user } = useAuth();
@@ -54,6 +59,7 @@ const Orders = () => {
 
                             <TableCell align="right">Name</TableCell>
                             <TableCell align="right">Ordered Product</TableCell>
+                            <TableCell align="right">Payment Status</TableCell>
 
                         </TableRow>
                     </TableHead>
@@ -67,6 +73,11 @@ const Orders = () => {
                                     {order.name}
                                 </TableCell>
                                 <TableCell align="right">{order.product}</TableCell>
+                                <TableCell align="right">{order.payment ?
+                                    "Paid" :
+                                    <Link to={`/dashboard/payment/${order._id}`}><button>Pay</button></Link>
+
+                                }</TableCell>
 
                                 <TableCell>
                                     <Button onClick={() => handleDelete(order._id)} variant="outlined" startIcon={<DeleteIcon />}>Delete Order</Button>
